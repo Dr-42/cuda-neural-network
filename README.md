@@ -8,11 +8,11 @@ It is a simple artificial neural network implementation using CUDA technology. T
 
 ## Requirements and Technical Info
 
-This repository contains **Eclipse Nsight** project.
+This repository contains a [builder_cpp](https://github.com/Dr-42/builder_cpp) project.
 
 To run this project **CUDA Toolkit** is required.
 
-During compilation **C++11** support has to be enabled.
+During compilation **C++17** support has to be enabled.
 
 ## Creating a Network
 
