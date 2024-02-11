@@ -1,4 +1,4 @@
-.chache
-compile-commands.json
+.cache
+compile_commands.json
 .bld_cpp
 

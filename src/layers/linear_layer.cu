@@ -1,6 +1,4 @@
-#include <stdlib.h>
 #include <assert.h>
-#include <iostream>
 #include <random>
 
 #include "layers/linear_layer.h"
@@ -9,6 +7,7 @@
 __global__ void linearLayerForward( float* W, float* A, float* Z, float* b,
 									int W_x_dim, int W_y_dim,
 									int A_x_dim, int A_y_dim) {
+	(void) A_y_dim;
 
 	int row = blockIdx.y * blockDim.y + threadIdx.y;
 	int col = blockIdx.x * blockDim.x + threadIdx.x;
@@ -29,6 +28,7 @@ __global__ void linearLayerForward( float* W, float* A, float* Z, float* b,
 __global__ void linearLayerBackprop(float* W, float* dZ, float *dA,
 									int W_x_dim, int W_y_dim,
 									int dZ_x_dim, int dZ_y_dim) {
+	(void) dZ_y_dim;
 
 	int col = blockIdx.x * blockDim.x + threadIdx.x;
 	int row = blockIdx.y * blockDim.y + threadIdx.y;
@@ -73,6 +73,7 @@ __global__ void linearLayerUpdateBias(  float* dZ, float* b,
 										int dZ_x_dim, int dZ_y_dim,
 										int b_x_dim,
 										float learning_rate) {
+	(void) b_x_dim;
 	int index = blockIdx.x * blockDim.x + threadIdx.x;
 
 	if (index < dZ_x_dim * dZ_y_dim) {
@@ -99,8 +100,8 @@ void LinearLayer::initializeWeightsRandomly() {
 	std::default_random_engine generator;
 	std::normal_distribution<float> normal_distribution(0.0, 1.0);
 
-	for (int x = 0; x < W.shape.x; x++) {
-		for (int y = 0; y < W.shape.y; y++) {
+	for (size_t x = 0; x < W.shape.x; x++) {
+		for (size_t y = 0; y < W.shape.y; y++) {
 			W[y * W.shape.x + x] = normal_distribution(generator) * weights_init_threshold;
 		}
 	}
@@ -109,7 +110,7 @@ void LinearLayer::initializeWeightsRandomly() {
 }
 
 void LinearLayer::initializeBiasWithZeros() {
-	for (int x = 0; x < b.shape.x; x++) {
+	for (size_t x = 0; x < b.shape.x; x++) {
 		b[x] = 0;
 	}
 

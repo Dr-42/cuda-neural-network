@@ -6,6 +6,6 @@ name = "cuda_test"
 src = "./src"
 include_dir = "./src"
 type = "exe"
-cflags = " -g -Wall -Wextra -Wno-unused-command-line-argument -Wno-unknown-cuda-version --cuda-gpu-arch=sm_86 --cuda-path=/usr/local/cuda-12.3 --std=c++17 -I/usr/local/cuda-12.3/include"
+cflags = " -g -Wall -Wextra -Wno-unknown-cuda-version --cuda-gpu-arch=sm_86 --cuda-path=/usr/local/cuda-12.3 --std=c++17 -I/usr/local/cuda-12.3/include"
 libs = "-lcudart -lcuda -L/usr/local/cuda-12.3/lib64"
 deps = [""]

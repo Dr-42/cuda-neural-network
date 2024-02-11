@@ -5,7 +5,6 @@
 #include "layers/linear_layer.h"
 #include "layers/relu_activation.h"
 #include "layers/sigmoid_activation.h"
-#include "nn_utils/nn_exception.h"
 #include "nn_utils/bce_cost.h"
 
 #include "coordinates_dataset.h"

@@ -6,7 +6,7 @@
 
 class CoordinatesDataset {
 private:
-	size_t batch_size;
+	//size_t batch_size;
 	size_t number_of_batches;
 
 	std::vector<Matrix> batches;

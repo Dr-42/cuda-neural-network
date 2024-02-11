@@ -2,8 +2,9 @@
 #include "nn_utils/nn_exception.h"
 
 Matrix::Matrix(size_t x_dim, size_t y_dim) :
-	shape(x_dim, y_dim), data_device(nullptr), data_host(nullptr),
-	device_allocated(false), host_allocated(false)
+	device_allocated(false), host_allocated(false),
+	shape(x_dim, y_dim),
+	data_device(nullptr), data_host(nullptr)
 { }
 
 Matrix::Matrix(Shape shape) :

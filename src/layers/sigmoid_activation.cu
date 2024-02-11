@@ -1,6 +1,5 @@
 #include "layers/sigmoid_activation.h"
 #include "nn_utils/nn_exception.h"
-#include <iostream>
 
 __device__ float sigmoid(float x) {
 	return 1.0f / (1 + exp(-x));
@@ -48,6 +47,7 @@ Matrix& SigmoidActivation::forward(Matrix& Z) {
 }
 
 Matrix& SigmoidActivation::backprop(Matrix& dA, float learning_rate) {
+	(void)learning_rate;
 	dZ.allocateMemoryIfNotAllocated(Z.shape);
 
 	dim3 block_size(256);

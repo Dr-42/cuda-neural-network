@@ -47,6 +47,7 @@ Matrix& ReLUActivation::forward(Matrix& Z) {
 }
 
 Matrix& ReLUActivation::backprop(Matrix& dA, float learning_rate) {
+	(void)learning_rate;
 	dZ.allocateMemoryIfNotAllocated(Z.shape);
 
 	dim3 block_size(256);
